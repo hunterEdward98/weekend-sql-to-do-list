@@ -1,4 +1,5 @@
-const Pool = require('pg');
+const pg = require('pg');
+const Pool = pg.Pool;
 const pool = new Pool({
      database: 'To Do List',
      user: 'hunter',

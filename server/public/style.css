@@ -1,0 +1,22 @@
+.content {
+  margin-left: 5em;
+  margin-right: 5em;
+  color: mediumspringgreen;
+}
+
+.col-6,
+.col-3,
+.col-2 {
+  background-color: midnightblue;
+  color: white;
+  border-radius: 1em;
+}
+.white {
+  background-color: Black;
+  border-radius: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.btn-primary {
+  font-size: 30;
+}
