@@ -71,10 +71,13 @@ toDoRouter.put('/:id/:newVal/:colName', (req, res) => {
           })
 
 });
-toDoRouter.delete('/', (req, res) => {
-     const queryText = 'SELECT * FROM list_items';
+toDoRouter.delete('/:id', (req, res) => {
+     const id = req.params.id;
+     const queryText = `
+     DELETE FROM list_items
+     WHERE id = $1`;
      pool
-          .query(queryText)
+          .query(queryText, [id])
           .then((result) => {
                res.send(result.rows);
           })

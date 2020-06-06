@@ -1,9 +1,17 @@
+body,
+html {
+  height: 100%;
+}
+body {
+  background-color: dodgerblue;
+  background: cover no-repeat;
+}
 .content {
-  margin-left: 5em;
-  margin-right: 5em;
+  margin-left: 2em;
+  margin-right: 2em;
   color: mediumspringgreen;
 }
-
+.col-12,
 .col-6,
 .col-3,
 .col-2 {
@@ -11,8 +19,20 @@
   color: white;
   border-radius: 1em;
 }
+.background {
+  background-color: dodgerblue;
+}
+.form {
+  background-color: rgb(38, 56, 3);
+}
+.black {
+  background-color: white;
+  color: black;
+  border-radius: 0;
+}
 .white {
   background-color: Black;
+  color: white;
   border-radius: 1em;
   padding-top: 1em;
   padding-bottom: 1em;

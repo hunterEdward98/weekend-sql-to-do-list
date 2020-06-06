@@ -15,33 +15,43 @@
   </head>
   <body>
     <div
-      class="content text-center justify-content-sm-center"
-      id="tasksGoHere"
-    ></div>
+      class="content text-center justify-content-center"
+    >
+    <div class='row justify-content-center col-12 text-center background' 
+    id="tasksGoHere"></div></div>
     </div>
-    <div class="row justify-content-center col-12 p-3 mb-1 bg-dark2 text-center" data-id="${task.id}">
+    <div class ='content text-center justify-content-center'>
+    <div class="row justify-content-center col-12 p-3 mb-1 bg-dark2 text-center form" data-id="${task.id}">
      
-     <div class="input-group col-12 col-lg-4 white justify-content-center">
+     <div class="input-group col-12 col-md-6 white justify-content-center">
           <div class="input-group-prepend">
             <div class="input-group-text">TITLE</div>
           </div>
-          <input class=" col-8"/>
+          <input class=" col-6 black" id = 'inTitle' />
         </div>
-        <div class="input-group col-12 col-lg-4 white justify-content-center">
+        <div class="input-group col-12 col-md-6 white justify-content-center">
           <div class="input-group-prepend">
             <div class="input-group-text">DETAILS</div>
           </div>
-          <input class=" col-8"/>
+          <input class=" col-6 black" id = 'inDetails'/>
         </div>
-        <div class="input-group col-12 col-lg-4 white justify-content-center">
+        <div class="input-group col-12 col-md-6 white justify-content-center">
           <div class="input-group-prepend">
-            <div class="input-group-text">DATE DUE</div>
+            <div class="input-group-text" >DATE DUE</div>
           </div>
-          <input class=" col-8"/>
+          <input class=" col-6 black" id = 'inDue' type="date"/>
         </div>
-        <div class = "white col-12 col-sm-8 col-lg-4">
-         <button class="btn btn-primary col-8"><h3>ADD TASK</h3></button>
+        <div class="input-group col-12 col-md-6 white justify-content-center">
+          <div class="input-group-prepend">
+            <div class="input-group-text">TIME DUE</div>
+          </div>
+          <input class=" col-6 black" id = 'inDueTime' type="time"/>
         </div>
+        
+        <div class = "white col-12 col-md-6"> 
+         <button class="btn btn-primary col-8" id = 'submitNewTask'><h3>ADD TASK</h3></button>
+        </div>
+    </div>
 </div>
   </body>
 </html>

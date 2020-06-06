@@ -30,7 +30,7 @@ Use CSS styling to move the aesthetic of the page beyond the vanilla HTML look:
 
 ### Approach
 
-We would recommend you spend some time thinking about how to approach this problem. Think through all the logic that will be needed prior to writing any code. Take your time, relax, remember that impostor syndrome is real, and that you are capable of knocking this out of the park!
+We would recommend you spend some time thinking about how to approach this problem. Think through all the logic that will be needed prior to writing any code. Take your time, relax, remember that impostor syndrome is re-sml, and that you are capable of knocking this out of the park!
 
 ### Create a Database
 
