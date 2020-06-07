@@ -1,10 +1,22 @@
-body,
-html {
+html,
+body {
   height: 100%;
 }
-body {
-  background-color: dodgerblue;
-  background: cover no-repeat;
+.bg {
+  background-image: linear-gradient(
+    215deg,
+    black,
+    rgb(10, 10, 33),
+    rgb(10, 10, 33),
+    rgb(10, 10, 43),
+    rgb(141, 65, 107),
+    rgb(211, 108, 108),
+    goldenrod
+  );
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .content {
   margin-left: 2em;
@@ -20,7 +32,7 @@ body {
   border-radius: 1em;
 }
 .background {
-  background-color: dodgerblue;
+  background-color: transparent;
 }
 .form {
   background-color: rgb(38, 56, 3);

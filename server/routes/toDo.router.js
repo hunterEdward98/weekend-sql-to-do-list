@@ -2,7 +2,7 @@ const pool = require('../modules/pool');
 const express = require('express');
 const toDoRouter = express.Router();
 toDoRouter.get('/', (req, res) => {
-     const queryText = 'SELECT * FROM list_items';
+     const queryText = 'SELECT * FROM list_items ORDER BY done_by_date ASC';
      pool
           .query(queryText)
           .then((result) => {
