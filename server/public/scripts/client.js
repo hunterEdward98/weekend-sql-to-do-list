@@ -6,7 +6,6 @@ $(document).ready(() => {
 })
 function update() {
      setInterval(function () {
-          console.log("test");
           getTasks();
      }, 1000);
 }
@@ -15,10 +14,9 @@ function getTasks() {
           method: 'GET',
           url: `toDo`
      }).then((response) => {
-          console.log(response, ': submitted');
           task2DOM(response);
      }).catch((response) => {
-          console.log(response, 'error');
+          alert(response, 'error');
      });
 }
 function addTask(title, desc, dateDue, timeDue, dateGiven) {
@@ -43,6 +41,17 @@ function deleteTask(id) {
                getTasks();
           });
      }
+}
+function updateTask(id, colName, newVal) {
+     $.ajax({
+          method: 'PUT',
+          url: `toDo/${id}/${newVal}/${colName}`
+     }).then((response) => {
+          console.log(response);
+          getTasks();
+     }).catch((response) => {
+          alert('your request did not go through, ', response)
+     });
 }
 function task2DOM(array) {
      $('#tasksGoHere').empty();
@@ -72,8 +81,8 @@ function task2DOM(array) {
           }
           else if (compareToCurrentDate(date, task.done_by_time) >= 0) {
                difference = (compareToCurrentDate(date, task.done_by_time));
-               row.append(`<div style="color:green" class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">TIME REMAINING:<h6>
-               <br>${convertMsToTime(difference)}<h6></div>`);
+               row.append(`<div style="color:green" class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">TIME LEFT:
+               <br>${convertMsToTime(difference)}<br><button id='markDone' class = "btn btn-success">MARK DONE</div>`);
           }
           else {
                row.append(`<div class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white" style="color: red">STATUS:
@@ -89,14 +98,14 @@ function convertMsToTime(ms) {
      let hours = Math.floor(((((ms) / 1000) / 60) / 60) - (days * 24));
      let minutes = Math.floor((((ms) / 1000) / 60) - (days * 1440 + hours * 60));
      let seconds = Math.floor(((ms) / 1000) - (days * 86400 + hours * 3600 + (minutes * 60)));
-     console.log(seconds);
-     let myTime = `DAYS:${days}, HOURS:${hours}, MINUTES:${minutes}, SECONDS:${seconds}`
+     let myTime = `${days}:${hours}:${minutes}:${seconds}`
      return myTime;
 }
 function compareToCurrentDate(date, time) {
      let current = new Date();
      let myDate = date.getMonth() + ' ' + date.getDate() + ', ' + date.getFullYear() + ' ' + time;
      let due = new Date(myDate);
+     console.log(due - current);
      return due - current;
 
 }
@@ -110,6 +119,9 @@ function clickHandler(event) {
           id = el.parent().parent().data('id');
           if (el.hasClass('delTask')) {
                deleteTask(id);
+          }
+          if (el.attr('id') == ('markDone')) {
+               updateTask(id, 'completed', 'true')
           }
      }
 }
@@ -126,19 +138,4 @@ function confirmTaskInfo() {
           $('#inDue').val('')
           $('#inDueTime').val('')
      }
-}
-function timeConvertor(time) {
-     console.log(time);
-     var PM = time.match('PM') ? true : false
-
-     time = time.split(':')
-     var min = time[1]
-
-     if (PM) {
-          var hour = 12 + parseInt(time[0], 10)
-     } else {
-          var hour = time[0]
-     }
-
-     console.log(hour + ':' + min)
 }

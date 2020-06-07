@@ -58,11 +58,11 @@ toDoRouter.put('/:id/:newVal/:colName', (req, res) => {
      } if (colName === 'completed') {
           queryText = `
           UPDATE list_items
-          SET conpleted = $1
+          SET completed = $1
           WHERE id = $2;`;
      }
      pool
-          .query(queryText, [id, newVal])
+          .query(queryText, [newVal, id])
           .then((result) => {
                res.send(203);
           })
