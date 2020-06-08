@@ -12,7 +12,7 @@ adjust the `pool.js` file in `server/modules` to fit your username and password 
 ## Setting Up/ Creating your database.
 
 You can name your database whatever you'd like to, but you'll need to change the database value in `pool.js` if you don't name it **To Do List**.
-when you're finished setting the database up, you need to set the table up. Create a table with the name of **list_items** in your new database, with the following values
+when you're finished setting the database up, you need to set the table up. Create a table with the name of **list_items** in your new database, with the following values **NOTE: if you do not name your table `list_items`, you will need to rewrite much of the project to be compatible with your table.**
 
 ```sql
 CREATE TABLE list_items (
@@ -26,7 +26,7 @@ added DATE NOT NULL)
 
 ## Running the App :)
 
-to run the app, you'll need to go to this file in a bash terminal, and type the commands
+To run the app, you'll need to go to this file in a bash terminal, and type the commands
 
 ```bash
 npm init --yes
@@ -35,8 +35,8 @@ npm install pg
 npm install moment
 ```
 
-YOU'RE READY TO START! just run
+**YOU'RE READY TO START!** just run
 
 ```bash
-node server/server.js
+npm start
 ```
