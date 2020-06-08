@@ -56,10 +56,11 @@ function updateTask(id, colName, newVal) {
 }
 function task2DOM(array) {
      $('#tasksGoHere').empty();
-     for (const task of array) {
+     for (const i in array) {
+          const task = array[i];
           let row = $(`<div class="row justify-content-center col-12 col-sm-5 p-3 m-1 text-center" data-id="${task.id}"></div>`);
           row.append(`<div style="background-color:lightblue;color:black" class="col-10 h2 text-center p-3 mb-1 bg-dark2">TASK #
-          ${task.id}</div>`);
+          ${i}</div>`);
           row.append(`<div class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">TASK:<br>
           ${task.title}</div>`);
           row.append(`<div class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">DETAILS:<br>
