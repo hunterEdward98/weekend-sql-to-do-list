@@ -3,7 +3,7 @@
 ## Intro
 
 This project is going to be a simple to do list with database support. adjust the `pool.js` file in `server/modules` to fit your username and password for whatever postgres tool you use.
-![Image of Project Running](images/Screenshot_2020-06-07 Document(1).png)
+![Image of Project Running](images/Screenshot_2020-06-07.png)
 
 ## Setting Up/ Creating your database.
 
