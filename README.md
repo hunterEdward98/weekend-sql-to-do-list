@@ -24,9 +24,9 @@ done_by_time TIME,
 added DATE NOT NULL)
 ```
 
-## Running the App :)
+## ADDING NECESSARY DEPENDENCIES
 
-To run the app, you'll need to go to this file in a bash terminal, and type the commands
+To run the app for the first time, you'll need to go to this file in a bash terminal, and type the commands
 
 ```bash
 npm init --yes
@@ -35,7 +35,9 @@ npm install pg
 npm install moment
 ```
 
-**YOU'RE READY TO START!** just run
+**This will not install anything to your computer. only the project.**
+
+## YOU'RE READY TO START! :)
 
 ```bash
 npm start
