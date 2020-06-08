@@ -1,0 +1,54 @@
+html,
+body {
+  height: 100%;
+}
+.bg {
+  background-image: linear-gradient(
+    215deg,
+    black,
+    rgb(10, 10, 33),
+    rgb(10, 10, 33),
+    rgb(10, 10, 43),
+    rgb(141, 65, 107),
+    rgb(211, 108, 108),
+    goldenrod
+  );
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.content {
+  margin-left: 2em;
+  margin-right: 2em;
+  color: mediumspringgreen;
+}
+.col-12,
+.col-6,
+.col-3,
+.col-2 {
+  background-color: midnightblue;
+  color: white;
+  border-radius: 1em;
+}
+.background {
+  background-color: transparent;
+}
+.form {
+  background-color: rgb(38, 56, 3);
+}
+.black {
+  background-color: white;
+  color: black;
+  border-radius: 0;
+}
+.white {
+  background-color: Black;
+  color: white;
+  border-radius: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.btn-primary {
+  font-size: 30;
+}

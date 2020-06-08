@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./scripts/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./scripts/client.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="bg overflow-auto">
+      <div class="content text-center justify-content-center">
+        <div
+          class="row justify-content-center col-12 text-center background"
+          id="tasksGoHere"
+        ></div>
+      </div>
+      <div class="content text-center justify-content-center">
+        <div
+          class="row justify-content-center col-12 p-3 mb-1 bg-dark2 text-center form"
+          data-id="${task.id}"
+        >
+          <div class="input-group col-12 col-md-6 white justify-content-center">
+            <div class="input-group-prepend">
+              <div class="input-group-text">TITLE</div>
+            </div>
+            <input class="col-6 black" id="inTitle" />
+          </div>
+          <div class="input-group col-12 col-md-6 white justify-content-center">
+            <div class="input-group-prepend">
+              <div class="input-group-text">DETAILS</div>
+            </div>
+            <input class="col-6 black" id="inDetails" />
+          </div>
+          <div class="input-group col-12 col-md-6 white justify-content-center">
+            <div class="input-group-prepend">
+              <div class="input-group-text">DATE DUE</div>
+            </div>
+            <input class="col-6 black" id="inDue" type="date" />
+          </div>
+          <div class="input-group col-12 col-md-6 white justify-content-center">
+            <div class="input-group-prepend">
+              <div class="input-group-text">TIME DUE</div>
+            </div>
+            <input class="col-6 black" id="inDueTime" type="time" />
+          </div>
+          <div class="white col-12 col-md-6">
+            <button class="btn btn-primary col-8" id="submitNewTask">
+              <h3>ADD TASK</h3>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
