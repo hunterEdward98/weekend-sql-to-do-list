@@ -32,16 +32,13 @@ function addTask(title, desc, dateDue, timeDue) {
      });
 }
 function deleteTask(id) {
-
-     if (confirm(`Are you Sure You're Done with this task?`)) {
-          $.ajax({
-               method: 'DELETE',
-               url: `toDo/${id}`
-          }).then((response) => {
-               console.log('DELETED')
-               getTasks();
-          });
-     }
+     $.ajax({
+          method: 'DELETE',
+          url: `toDo/${id}`
+     }).then((response) => {
+          console.log('DELETED')
+          getTasks();
+     });
 }
 function updateTask(id, colName, newVal) {
      $.ajax({
@@ -82,7 +79,8 @@ function task2DOM(array) {
           else if (compareToCurrentDate(myDate, task.done_by_time) >= 0) {
                difference = (compareToCurrentDate(myDate, task.done_by_time));
                row.append(`<div style="color:green" class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">TIME LEFT:
-               <br>${convertMsToTime(difference)}<br><button id='markDone' class = "btn btn-success">MARK DONE</div>`);
+               <br>${convertMsToTime(difference)}<br><button id='markDone' class = "btn btn-success">MARK DONE </button>
+               `);
           }
           else {
                row.append(`<div class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white" style="color: red">STATUS:
@@ -117,9 +115,25 @@ function clickHandler(event) {
           confirmTaskInfo();
      }
      else {
-          id = el.parent().parent().data('id');
+          let id = el.parent().parent().data('id');
           if (el.hasClass('delTask')) {
-               deleteTask(id);
+               swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this task!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+               })
+                    .then((willDelete) => {
+                         if (willDelete) {
+                              deleteTask(id);
+                              swal("Poof! Your imaginary file has been deleted!", {
+                                   icon: "success",
+                              });
+                         } else {
+                              swal("Your imaginary file is safe!");
+                         }
+                    });
           }
           if (el.attr('id') == ('markDone')) {
                updateTask(id, 'completed', 'true')
