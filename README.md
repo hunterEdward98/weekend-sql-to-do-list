@@ -24,7 +24,7 @@ done_by_time TIME,
 added DATE NOT NULL)
 ```
 
-## ADDING NECESSARY DEPENDENCIES
+## Adding Necessary Dependecies
 
 To run the app for the first time, you'll need to go to this file in a bash terminal, and type the commands
 
@@ -37,7 +37,7 @@ npm install moment
 
 **This will not install anything to your computer. only the project.**
 
-## YOU'RE READY TO START! :)
+## You're Ready To Start ! :)
 
 ```bash
 npm start
