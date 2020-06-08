@@ -2,8 +2,12 @@
 
 ## Intro
 
-This project is going to be a simple to do list with database support. adjust the `pool.js` file in `server/modules` to fit your username and password for whatever postgres tool you use.
+This project is going to be a simple to do list with database support. It will be responsive to window size, and if done right, should include all logical features for a To Do List app, while being straightforward for the end user.
 ![Image of Project Running](images/Screenshot_2020-06-07.png)
+
+## linking to postgres
+
+adjust the `pool.js` file in `server/modules` to fit your username and password for whatever postgres tool you use.
 
 ## Setting Up/ Creating your database.
 
