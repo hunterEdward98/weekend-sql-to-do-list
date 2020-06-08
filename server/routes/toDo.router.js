@@ -1,6 +1,7 @@
 const pool = require('../modules/pool');
 const express = require('express');
 const toDoRouter = express.Router();
+const moment = require('moment');
 toDoRouter.get('/', (req, res) => {
      const queryText = 'SELECT * FROM list_items ORDER BY done_by_date ASC';
      pool
@@ -13,12 +14,12 @@ toDoRouter.get('/', (req, res) => {
           })
 
 });
-toDoRouter.post('/:title/:desc/:doByDate/:doByTime/:dateAdded', (req, res) => {
+toDoRouter.post('/:title/:desc/:doByDate/:doByTime', (req, res) => {
      const title = req.params.title;
      const desc = req.params.desc;
      const doByDate = req.params.doByDate;
      const doByTime = req.params.doByTime;
-     const dateAdded = req.params.dateAdded;
+     const dateAdded = moment().format('YYYY-MM-DD');
      const queryText = 'INSERT INTO list_items (title,description, done_by_date, done_by_time, added) values ($1,$2,$3,$4,$5)';
      pool
           .query(queryText, [title, desc, doByDate, doByTime, dateAdded])

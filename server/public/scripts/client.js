@@ -1,3 +1,4 @@
+
 $(document).ready(() => {
      update();
      setTimeout(getTasks(), 1000);
@@ -19,10 +20,10 @@ function getTasks() {
           alert(response, 'error');
      });
 }
-function addTask(title, desc, dateDue, timeDue, dateGiven) {
+function addTask(title, desc, dateDue, timeDue) {
      $.ajax({
           method: 'POST',
-          url: `toDo/${title}/${desc}/${dateDue}/${timeDue}/${dateGiven}`
+          url: `toDo/${title}/${desc}/${dateDue}/${timeDue}`
      }).then((response) => {
           console.log(response, ': submitted');
           getTasks();
@@ -63,24 +64,22 @@ function task2DOM(array) {
           ${task.title}</div>`);
           row.append(`<div class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">DETAILS:<br>
           ${task.description}</div>`);
-          date = new Date(task.done_by_date);
-          compareToCurrentDate(date);
-          myDate =
-               date.getFullYear() + "/" + (date.getMonth()) + "/" + date.getDate();
+          let myDate = new Date(task.done_by_date);
+          myDate = + (myDate.getMonth() + 1) + " " + myDate.getDate() + ", " + myDate.getFullYear();
           row.append(`<div class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">NEED DONE:<br>
           ${myDate} ${task.done_by_time}</div>`);
           dateAssigned = new Date(task.added);
-          myDate = dateAssigned.getFullYear() + "/" + (dateAssigned.getMonth()) + "/" + dateAssigned.getDate();
+          assignedDate = dateAssigned.getFullYear() + "/" + (dateAssigned.getMonth() + 1) + "/" + dateAssigned.getDate();
           row.append(`<div class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">ASSIGNED:<br>
-          ${myDate}</div>`);
+          ${assignedDate}</div>`);
 
 
           if (task.completed) {
                row.append(`<div class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">STATUS:
                COMPLETED </div>`);
           }
-          else if (compareToCurrentDate(date, task.done_by_time) >= 0) {
-               difference = (compareToCurrentDate(date, task.done_by_time));
+          else if (compareToCurrentDate(myDate, task.done_by_time) >= 0) {
+               difference = (compareToCurrentDate(myDate, task.done_by_time));
                row.append(`<div style="color:green" class="col-sm-12 h5 col-md-6 col-lg-4 text-center p-3 mb-1 white">TIME LEFT:
                <br>${convertMsToTime(difference)}<br><button id='markDone' class = "btn btn-success">MARK DONE</div>`);
           }
@@ -101,12 +100,13 @@ function convertMsToTime(ms) {
      let myTime = `${days}:${hours}:${minutes}:${seconds}`
      return myTime;
 }
-function compareToCurrentDate(date, time) {
+function compareToCurrentDate(myDate, time) {
      let current = new Date();
-     let myDate = date.getMonth() + ' ' + date.getDate() + ', ' + date.getFullYear() + ' ' + time;
-     let due = new Date(myDate);
-     console.log(due - current);
-     return due - current;
+     let date = new Date(myDate);
+     let dt = `${date.getMonth() + 1} ${date.getDate()}, ${date.getFullYear()} ${time} GMT-0500 (Central Daylight Time)`
+     let due = new Date(dt);
+     let out = due - current;
+     return out;
 
 }
 function clickHandler(event) {
@@ -127,12 +127,7 @@ function clickHandler(event) {
 }
 function confirmTaskInfo() {
      if ($('#inTitle').val() && Date($('#inDue').val()) && $('#inDetails').val()) {
-          let currentDate = new Date()
-          let currentD = currentDate.getDate();
-          let currentM = currentDate.getMonth();
-          let currentY = currentDate.getFullYear();
-          currentDate = currentY + '-' + currentM + '-' + currentD;
-          addTask($('#inTitle').val(), $('#inDetails').val(), $('#inDue').val(), $('#inDueTime').val(), currentDate);
+          addTask($('#inTitle').val(), $('#inDetails').val(), $('#inDue').val(), $('#inDueTime').val());
           $('#inTitle').val('');
           $('#inDetails').val('')
           $('#inDue').val('')
